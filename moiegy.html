@@ -1,0 +1,1299 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>درع | مركز القيادة الأمنية</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap');
+
+:root {
+    --bg: #090e0d;
+    --panel: #101816;
+    --panel2: #141f1b;
+    --green: #b8ff65;
+    --green2: #72bd45;
+    --text: #edf5ef;
+    --muted: #82928a;
+    --border: #26352d;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Cairo', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    overflow-x: hidden;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image:
+        linear-gradient(#ffffff05 1px, transparent 1px),
+        linear-gradient(90deg, #ffffff05 1px, transparent 1px);
+    background-size: 45px 45px;
+    pointer-events: none;
+    z-index: -1;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button {
+    font-family: inherit;
+    cursor: pointer;
+}
+
+.container {
+    width: min(1180px, 91%);
+    margin: auto;
+}
+
+/* NAVBAR */
+
+nav {
+    height: 82px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid var(--border);
+    background: #090e0de8;
+    backdrop-filter: blur(15px);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.nav-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.brand-icon {
+    width: 46px;
+    height: 46px;
+    display: grid;
+    place-items: center;
+    color: var(--green);
+    border: 1px solid #b8ff6540;
+    background: #b8ff650b;
+    font-size: 24px;
+    clip-path: polygon(50% 0, 90% 18%, 90% 68%, 50% 100%, 10% 68%, 10% 18%);
+}
+
+.brand-name {
+    font-size: 23px;
+    font-weight: 900;
+    letter-spacing: 1px;
+}
+
+.brand-name span {
+    color: var(--green);
+}
+
+.brand-sub {
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 1px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 28px;
+    color: #a7b4ac;
+    font-size: 13px;
+}
+
+.nav-links a {
+    transition: .25s;
+}
+
+.nav-links a:hover {
+    color: var(--green);
+}
+
+.nav-status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    color: var(--green);
+    border: 1px solid #b8ff6530;
+    background: #b8ff6509;
+    padding: 9px 13px;
+    border-radius: 4px;
+}
+
+.dot {
+    width: 7px;
+    height: 7px;
+    background: var(--green);
+    border-radius: 50%;
+    box-shadow: 0 0 12px var(--green);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    50% { opacity: .35; }
+}
+
+/* HERO */
+
+.hero {
+    min-height: 610px;
+    display: grid;
+    grid-template-columns: 1.05fr .95fr;
+    align-items: center;
+    gap: 55px;
+    padding: 75px 0;
+}
+
+.eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--green);
+    font-size: 12px;
+    letter-spacing: 1px;
+    margin-bottom: 25px;
+}
+
+.eyebrow::before {
+    content: "";
+    width: 28px;
+    height: 2px;
+    background: var(--green);
+}
+
+.hero h1 {
+    font-size: clamp(42px, 5.3vw, 72px);
+    line-height: 1.35;
+    font-weight: 900;
+    margin-bottom: 22px;
+}
+
+.hero h1 span {
+    color: var(--green);
+    position: relative;
+}
+
+.hero p {
+    max-width: 520px;
+    color: #91a098;
+    font-size: 15px;
+    line-height: 2.2;
+}
+
+.hero-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 32px;
+}
+
+.btn {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 22px;
+    font-weight: 800;
+    font-size: 13px;
+    border-radius: 4px;
+    transition: .25s;
+}
+
+.btn-primary {
+    background: var(--green);
+    color: #11190d;
+    border: 1px solid var(--green);
+}
+
+.btn-primary:hover {
+    background: #d1ff9c;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px #b8ff6520;
+}
+
+.btn-secondary {
+    border: 1px solid var(--border);
+    color: var(--text);
+}
+
+.btn-secondary:hover {
+    border-color: var(--green);
+    color: var(--green);
+}
+
+.hero-footnote {
+    display: flex;
+    gap: 25px;
+    flex-wrap: wrap;
+    margin-top: 40px;
+    color: #839188;
+    font-size: 11px;
+}
+
+.hero-footnote span::before {
+    content: "✓";
+    color: var(--green);
+    margin-left: 7px;
+}
+
+/* COMMAND DISPLAY */
+
+.command-display {
+    position: relative;
+    min-height: 420px;
+    background:
+        radial-gradient(ellipse at center, #24432b44, transparent 65%),
+        #0c1310;
+    border: 1px solid #2c4032;
+    overflow: hidden;
+    padding: 20px;
+}
+
+.command-display::before,
+.command-display::after {
+    content: "";
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    border-color: var(--green);
+    border-style: solid;
+    opacity: .7;
+}
+
+.command-display::before {
+    top: 0;
+    right: 0;
+    border-width: 2px 2px 0 0;
+}
+
+.command-display::after {
+    bottom: 0;
+    left: 0;
+    border-width: 0 0 2px 2px;
+}
+
+.display-top {
+    display: flex;
+    justify-content: space-between;
+    color: var(--muted);
+    font-size: 10px;
+    letter-spacing: 1px;
+}
+
+.display-top strong {
+    color: var(--green);
+    font-weight: 600;
+}
+
+.radar {
+    position: relative;
+    width: min(290px, 80%);
+    aspect-ratio: 1;
+    margin: 28px auto 20px;
+    border: 1px solid #b8ff6540;
+    border-radius: 50%;
+    background:
+        radial-gradient(circle, transparent 19%, #b8ff6517 20%, transparent 21%),
+        radial-gradient(circle, transparent 39%, #b8ff6520 40%, transparent 41%),
+        radial-gradient(circle, transparent 59%, #b8ff6520 60%, transparent 61%),
+        radial-gradient(circle, transparent 79%, #b8ff6520 80%, transparent 81%);
+}
+
+.radar::before,
+.radar::after {
+    content: "";
+    position: absolute;
+    background: #b8ff6525;
+}
+
+.radar::before {
+    width: 1px;
+    height: 100%;
+    left: 50%;
+}
+
+.radar::after {
+    height: 1px;
+    width: 100%;
+    top: 50%;
+}
+
+.radar-sweep {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: conic-gradient(from 0deg, transparent 75%, #b8ff6540 95%, #b8ff6580);
+    animation: radar 6s linear infinite;
+}
+
+@keyframes radar {
+    to { transform: rotate(360deg); }
+}
+
+.radar-center {
+    position: absolute;
+    width: 13px;
+    height: 13px;
+    background: var(--green);
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 22px var(--green);
+    z-index: 2;
+}
+
+.radar-point {
+    position: absolute;
+    width: 7px;
+    height: 7px;
+    background: var(--green);
+    border-radius: 50%;
+    box-shadow: 0 0 12px var(--green);
+    z-index: 2;
+}
+
+.point-one { top: 26%; left: 63%; }
+.point-two { top: 66%; left: 28%; }
+.point-three { top: 35%; left: 27%; }
+.point-four { top: 73%; left: 66%; }
+
+.radar-label {
+    position: absolute;
+    color: #9caf9e;
+    font-size: 9px;
+    z-index: 3;
+}
+
+.label-one { top: 20%; right: 15%; }
+.label-two { bottom: 23%; left: 13%; }
+.label-three { top: 31%; left: 13%; }
+
+.display-bottom {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-top: 1px solid var(--border);
+    padding-top: 18px;
+    gap: 10px;
+}
+
+.display-stat {
+    text-align: center;
+}
+
+.display-stat strong {
+    display: block;
+    color: var(--green);
+    font-size: 22px;
+}
+
+.display-stat span {
+    color: var(--muted);
+    font-size: 10px;
+}
+
+/* TICKER */
+
+.ticker {
+    border-block: 1px solid var(--border);
+    background: #0d1411;
+    overflow: hidden;
+}
+
+.ticker-inner {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    white-space: nowrap;
+    padding: 17px 0;
+    color: #91a097;
+    font-size: 11px;
+}
+
+.ticker strong {
+    color: var(--green);
+}
+
+.ticker-item::before {
+    content: "◆";
+    color: var(--green);
+    margin-left: 12px;
+    font-size: 8px;
+}
+
+/* SECTIONS */
+
+section.content-section {
+    padding: 100px 0;
+}
+
+.section-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    gap: 20px;
+    margin-bottom: 35px;
+}
+
+.section-kicker {
+    color: var(--green);
+    font-size: 11px;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+.section-head h2 {
+    font-size: clamp(27px, 4vw, 40px);
+    font-weight: 900;
+}
+
+.section-head p {
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 2;
+    max-width: 330px;
+}
+
+/* SERVICES */
+
+.sector-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+
+.sector-card {
+    position: relative;
+    min-height: 235px;
+    padding: 27px;
+    border: 1px solid var(--border);
+    background: linear-gradient(145deg, #121c17, #0d1311);
+    transition: .3s;
+    overflow: hidden;
+}
+
+.sector-card:hover {
+    transform: translateY(-5px);
+    border-color: #b8ff6570;
+    background: #142019;
+}
+
+.sector-card::after {
+    content: attr(data-number);
+    position: absolute;
+    left: 12px;
+    bottom: -35px;
+    font-size: 110px;
+    font-weight: 900;
+    color: #ffffff04;
+    pointer-events: none;
+}
+
+.sector-icon {
+    width: 47px;
+    height: 47px;
+    display: grid;
+    place-items: center;
+    border: 1px solid #b8ff6530;
+    background: #b8ff650c;
+    color: var(--green);
+    font-size: 23px;
+    margin-bottom: 22px;
+}
+
+.sector-card h3 {
+    font-size: 18px;
+    margin-bottom: 9px;
+}
+
+.sector-card p {
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 2;
+}
+
+.card-link {
+    display: inline-block;
+    color: var(--green);
+    font-size: 11px;
+    margin-top: 19px;
+}
+
+/* ABOUT */
+
+.about {
+    background: #0c1310;
+    border-block: 1px solid var(--border);
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 65px;
+    align-items: center;
+}
+
+.about-visual {
+    min-height: 340px;
+    border: 1px solid var(--border);
+    background:
+        linear-gradient(135deg, transparent 48%, #b8ff6509 49%, transparent 50%),
+        repeating-linear-gradient(0deg, transparent, transparent 39px, #ffffff07 40px),
+        repeating-linear-gradient(90deg, transparent, transparent 39px, #ffffff07 40px),
+        #0d1510;
+    display: grid;
+    place-items: center;
+    position: relative;
+}
+
+.big-symbol {
+    font-size: 110px;
+    color: var(--green);
+    text-shadow: 0 0 70px #b8ff6520;
+}
+
+.corner-label {
+    position: absolute;
+    font-size: 10px;
+    color: var(--muted);
+}
+
+.corner-top { top: 18px; right: 18px; }
+.corner-bottom { bottom: 18px; left: 18px; }
+
+.about-text h2 {
+    font-size: 38px;
+    line-height: 1.5;
+    margin-bottom: 18px;
+}
+
+.about-text h2 span {
+    color: var(--green);
+}
+
+.about-text p {
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 2.3;
+    margin-bottom: 25px;
+}
+
+.values {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.value {
+    padding: 14px;
+    border-right: 2px solid var(--green);
+    background: #ffffff04;
+}
+
+.value strong {
+    display: block;
+    font-size: 13px;
+}
+
+.value span {
+    color: var(--muted);
+    font-size: 10px;
+}
+
+/* PRINCIPLES */
+
+.principles-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+
+.principle {
+    padding: 25px 20px;
+    border-top: 1px solid var(--green);
+    background: var(--panel);
+}
+
+.principle-number {
+    color: var(--green);
+    font-size: 11px;
+    margin-bottom: 20px;
+}
+
+.principle h3 {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.principle p {
+    color: var(--muted);
+    font-size: 11px;
+    line-height: 2;
+}
+
+/* CTA */
+
+.cta {
+    padding: 55px;
+    border: 1px solid #b8ff6530;
+    background:
+        radial-gradient(ellipse at left, #b8ff6510, transparent 60%),
+        #101914;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.cta h2 {
+    font-size: clamp(24px, 3vw, 36px);
+    margin-bottom: 10px;
+}
+
+.cta p {
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 2;
+}
+
+/* FOOTER */
+
+footer {
+    margin-top: 100px;
+    border-top: 1px solid var(--border);
+    padding: 35px 0;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+footer p {
+    color: var(--muted);
+    font-size: 11px;
+}
+
+.footer-tag {
+    color: var(--green);
+    font-size: 10px;
+}
+
+/* REVEAL */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(25px);
+    transition: opacity .7s ease, transform .7s ease;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* BACK TO TOP */
+
+.top-button {
+    position: fixed;
+    bottom: 22px;
+    left: 22px;
+    width: 43px;
+    height: 43px;
+    display: grid;
+    place-items: center;
+    color: #11190d;
+    background: var(--green);
+    border: none;
+    font-size: 20px;
+    z-index: 90;
+    opacity: 0;
+    pointer-events: none;
+    transition: .25s;
+}
+
+.top-button.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 900px) {
+    .nav-links {
+        gap: 13px;
+    }
+
+    .hero {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .hero-copy {
+        text-align: center;
+    }
+
+    .hero p {
+        margin: auto;
+    }
+
+    .hero-actions,
+    .hero-footnote {
+        justify-content: center;
+    }
+
+    .command-display {
+        max-width: 600px;
+        width: 100%;
+        margin: auto;
+    }
+
+    .sector-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .about-grid {
+        gap: 30px;
+    }
+
+    .principles-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    nav {
+        height: 70px;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    .nav-status {
+        font-size: 9px;
+        padding: 8px;
+    }
+
+    .brand-name {
+        font-size: 20px;
+    }
+
+    .hero {
+        padding: 55px 0;
+    }
+
+    .hero h1 {
+        font-size: 43px;
+    }
+
+    section.content-section {
+        padding: 65px 0;
+    }
+
+    .section-head {
+        align-items: start;
+        flex-direction: column;
+    }
+
+    .sector-grid,
+    .about-grid,
+    .principles-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .about-visual {
+        min-height: 260px;
+    }
+
+    .about-text h2 {
+        font-size: 30px;
+    }
+
+    .cta {
+        padding: 30px 22px;
+        align-items: start;
+        flex-direction: column;
+    }
+
+    .display-stat strong {
+        font-size: 18px;
+    }
+
+    .ticker-inner {
+        gap: 25px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVIGATION -->
+<nav>
+    <div class="container nav-content">
+
+        <a href="#home" class="brand">
+            <div class="brand-icon">⬡</div>
+            <div>
+                <div class="brand-name">دِرع<span></span></div>
+                <div class="brand-sub">SECURITY COMMAND CENTER</div>
+            </div>
+        </a>
+
+        <div class="nav-links">
+            <a href="#home">الرئيسية</a>
+            <a href="#sectors">القطاعات</a>
+            <a href="#about">عن درع</a>
+            <a href="#principles">مبادئنا</a>
+        </div>
+
+        <div class="nav-status">
+            <span class="dot"></span>
+            <span>الواجهة التجريبية تعمل</span>
+        </div>
+
+    </div>
+</nav>
+
+<!-- HERO -->
+<main id="home" class="container">
+
+    <section class="hero">
+
+        <div class="hero-copy reveal">
+
+            <div class="eyebrow">
+                منصة أمنية افتراضية
+            </div>
+
+            <h1>
+                عينٌ لا تغفل.<br>
+                <span>درعٌ يحمي.</span>
+            </h1>
+
+            <p>
+                تجربة رقمية تستكشف عالم العمل الشرطي،
+                وتعرّفك بالقطاعات المختلفة، والمسؤوليات،
+                والقيم التي تقوم عليها خدمة المجتمع.
+            </p>
+
+            <div class="hero-actions">
+                <a href="#sectors" class="btn btn-primary">
+                    استكشف القطاعات <span>←</span>
+                </a>
+
+                <a href="#about" class="btn btn-secondary">
+                    اكتشف المنصة
+                </a>
+            </div>
+
+            <div class="hero-footnote">
+                <span>الانضباط</span>
+                <span>المسؤولية</span>
+                <span>خدمة المجتمع</span>
+            </div>
+
+        </div>
+
+        <!-- RADAR -->
+        <div class="command-display reveal">
+
+            <div class="display-top">
+                <span>DR3 // COMMAND INTERFACE</span>
+                <strong>DEMO MODE</strong>
+            </div>
+
+            <div class="radar">
+
+                <div class="radar-sweep"></div>
+                <div class="radar-center"></div>
+
+                <div class="radar-point point-one"></div>
+                <div class="radar-point point-two"></div>
+                <div class="radar-point point-three"></div>
+                <div class="radar-point point-four"></div>
+
+                <span class="radar-label label-one">منطقة 01</span>
+                <span class="radar-label label-two">منطقة 02</span>
+                <span class="radar-label label-three">منطقة 03</span>
+
+            </div>
+
+            <div class="display-bottom">
+
+                <div class="display-stat">
+                    <strong>06</strong>
+                    <span>قطاعات معروضة</span>
+                </div>
+
+                <div class="display-stat">
+                    <strong>24/7</strong>
+                    <span>خدمة المجتمع</span>
+                </div>
+
+                <div class="display-stat">
+                    <strong>100%</strong>
+                    <span>واجهة تجريبية</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+<!-- INFO TICKER -->
+<div class="ticker">
+    <div class="container ticker-inner">
+        <span class="ticker-item"><strong>DR3</strong> — منصة تعريفية افتراضية</span>
+        <span class="ticker-item">الالتزام بالقانون</span>
+        <span class="ticker-item">حماية الحقوق</span>
+        <span class="ticker-item">سرعة الاستجابة</span>
+        <span class="ticker-item">خدمة المواطنين</span>
+    </div>
+</div>
+
+<!-- SECTORS -->
+<section id="sectors" class="content-section container">
+
+    <div class="section-head reveal">
+        <div>
+            <div class="section-kicker">01 / القطاعات</div>
+            <h2>لكل مهمة رجالها.</h2>
+        </div>
+
+        <p>
+            تعرّف على نماذج من مجالات العمل الشرطي
+            واكتشف اختلاف المهام والمسؤوليات.
+        </p>
+    </div>
+
+    <div class="sector-grid">
+
+        <article class="sector-card reveal" data-number="01">
+            <div class="sector-icon">✦</div>
+            <h3>النجدة والاستجابة</h3>
+            <p>
+                التعامل مع البلاغات الطارئة، ومساندة المواطنين،
+                والاستجابة للحوادث وفق الإجراءات المعتمدة.
+            </p>
+            <a class="card-link" href="#principles">اعرف المزيد ←</a>
+        </article>
+
+        <article class="sector-card reveal" data-number="02">
+            <div class="sector-icon">⌖</div>
+            <h3>المرور</h3>
+            <p>
+                تنظيم حركة الطرق، والحد من الحوادث،
+                والمساعدة في تحقيق انسيابية الحركة.
+            </p>
+            <a class="card-link" href="#principles">اعرف المزيد ←</a>
+        </article>
+
+        <article class="sector-card reveal" data-number="03">
+            <div class="sector-icon">⬡</div>
+            <h3>الأمن العام</h3>
+            <p>
+                دعم الأمن المجتمعي والتعامل مع الوقائع
+                الجنائية بالتنسيق مع الجهات المختصة.
+            </p>
+            <a class="card-link" href="#principles">اعرف المزيد ←</a>
+        </article>
+
+        <article class="sector-card reveal" data-number="04">
+            <div class="sector-icon">◈</div>
+            <h3>تأمين المنشآت</h3>
+            <p>
+                حماية المنشآت وتنظيم الدخول إليها،
+                مع مراعاة قواعد السلامة والإجراءات القانونية.
+            </p>
+            <a class="card-link" href="#principles">اعرف المزيد ←</a>
+        </article>
+
+        <article class="sector-card reveal" data-number="05">
+            <div class="sector-icon">⌘</div>
+            <h3>مكافحة الجرائم الإلكترونية</h3>
+            <p>
+                التعامل مع أنواع من الجرائم الرقمية،
+                والمساهمة في حماية البيانات والأدلة الإلكترونية.
+            </p>
+            <a class="card-link" href="#principles">اعرف المزيد ←</a>
+        </article>
+
+        <article class="sector-card reveal" data-number="06">
+            <div class="sector-icon">◇</div>
+            <h3>شرطة السياحة والآثار</h3>
+            <p>
+                المساهمة في حماية المواقع السياحية والأثرية
+                ومساعدة الزائرين وتأمين المواقع وفق القانون.
+            </p>
+            <a class="card-link" href="#principles">اعرف المزيد ←</a>
+        </article>
+
+    </div>
+
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="content-section about">
+
+    <div class="container about-grid">
+
+        <div class="about-visual reveal">
+
+            <span class="corner-label corner-top">
+                DR3 / IDENTITY SYSTEM
+            </span>
+
+            <div class="big-symbol">⬡</div>
+
+            <span class="corner-label corner-bottom">
+                DISCIPLINE · DUTY · JUSTICE
+            </span>
+
+        </div>
+
+        <div class="about-text reveal">
+
+            <div class="section-kicker">02 / عن المنصة</div>
+
+            <h2>
+                القوة الحقيقية<br>
+                <span>مسؤولية.</span>
+            </h2>
+
+            <p>
+                «درع» مشروع تصميمي تجريبي يقدّم تصورًا حديثًا
+                لمنصة تعريفية عن العمل الشرطي. هدفه تنظيم المعلومات
+                وتقديمها بطريقة واضحة، مع التركيز على الانضباط،
+                واحترام القانون، وحماية حقوق المواطنين.
+            </p>
+
+            <div class="values">
+
+                <div class="value">
+                    <strong>الانضباط</strong>
+                    <span>الالتزام بالواجب والمسؤولية</span>
+                </div>
+
+                <div class="value">
+                    <strong>العدالة</strong>
+                    <span>احترام القانون وحقوق الجميع</span>
+                </div>
+
+                <div class="value">
+                    <strong>الجاهزية</strong>
+                    <span>التعلم والاستعداد للمسؤولية</span>
+                </div>
+
+                <div class="value">
+                    <strong>الإنسانية</strong>
+                    <span>مساعدة الناس وصون كرامتهم</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- PRINCIPLES -->
+<section id="principles" class="content-section container">
+
+    <div class="section-head reveal">
+        <div>
+            <div class="section-kicker">03 / المبادئ</div>
+            <h2>أساس كل مهمة.</h2>
+        </div>
+
+        <p>
+            الأداء المسؤول يبدأ من التفكير السليم
+            وينتهي بحماية الإنسان واحترام القانون.
+        </p>
+    </div>
+
+    <div class="principles-grid">
+
+        <article class="principle reveal">
+            <div class="principle-number">01 — LAW</div>
+            <h3>القانون أولًا</h3>
+            <p>
+                الالتزام بالإجراءات القانونية وصون حقوق
+                الأفراد في جميع الظروف.
+            </p>
+        </article>
+
+        <article class="principle reveal">
+            <div class="principle-number">02 — DUTY</div>
+            <h3>المسؤولية</h3>
+            <p>
+                إدراك أثر القرارات والتعامل مع الواجب
+                بجدية وانضباط.
+            </p>
+        </article>
+
+        <article class="principle reveal">
+            <div class="principle-number">03 — TEAM</div>
+            <h3>روح الفريق</h3>
+            <p>
+                التعاون وتبادل المعلومات والتواصل الواضح
+                لتحقيق الأهداف المشتركة.
+            </p>
+        </article>
+
+        <article class="principle reveal">
+            <div class="principle-number">04 — PEOPLE</div>
+            <h3>خدمة الناس</h3>
+            <p>
+                الاستماع للمواطنين وتقديم المساعدة
+                باحترام وهدوء وموضوعية.
+            </p>
+        </article>
+
+    </div>
+
+</section>
+
+<!-- CALL TO ACTION -->
+<section class="container">
+
+    <div class="cta reveal">
+
+        <div>
+            <div class="section-kicker">YOUR NEXT STEP</div>
+            <h2>ابدأ بمعرفة المهمة.</h2>
+            <p>
+                استكشف القطاعات، وافهم المسؤوليات،
+                وابنِ معرفتك خطوة بخطوة.
+            </p>
+        </div>
+
+        <a href="#sectors" class="btn btn-primary">
+            استكشف القطاعات ←
+        </a>
+
+    </div>
+
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="container footer-content">
+
+        <a href="#home" class="brand">
+            <div class="brand-icon">⬡</div>
+            <div>
+                <div class="brand-name">دِرع<span>.</span></div>
+                <div class="brand-sub">SECURITY COMMAND CENTER</div>
+            </div>
+        </a>
+
+        <p>
+            © <span id="year"></span> درع — مشروع تصميمي تجريبي غير رسمي.
+        </p>
+
+        <span class="footer-tag">
+            BUILT WITH PURPOSE.
+        </span>
+
+    </div>
+</footer>
+
+<button class="top-button" id="topButton" aria-label="العودة للأعلى">
+    ↑
+</button>
+
+<script>
+/* السنة الحالية */
+document.getElementById("year").textContent =
+    new Date().getFullYear();
+
+/* ظهور العناصر عند التمرير */
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+        }
+    });
+}, {
+    threshold: 0.12
+});
+
+document.querySelectorAll(".reveal").forEach(element => {
+    observer.observe(element);
+});
+
+/* زر العودة للأعلى */
+const topButton = document.getElementById("topButton");
+
+window.addEventListener("scroll", () => {
+    if (window.scrollY > 400) {
+        topButton.classList.add("show");
+    } else {
+        topButton.classList.remove("show");
+    }
+});
+
+topButton.addEventListener("click", () => {
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+});
+
+/* حركة تفاعلية بسيطة على بطاقات القطاعات */
+document.querySelectorAll(".sector-card").forEach(card => {
+    card.addEventListener("mouseenter", () => {
+        card.style.setProperty("--hovered", "1");
+    });
+
+    card.addEventListener("mouseleave", () => {
+        card.style.setProperty("--hovered", "0");
+    });
+});
+</script>
+
+</body>
+</html>
