@@ -860,6 +860,794 @@ footer p {
         scroll-behavior: auto !important;
     }
 }
+
+/* ===== OMEGA-STYLE ATMOSPHERE FOR DER3 ===== */
+
+/* توهّج أخضر متحرك في الخلفية */
+body {
+    background-image:
+        radial-gradient(ellipse at 12% 20%, #78ff6510, transparent 35%),
+        radial-gradient(ellipse at 88% 55%, #35ff9b0a, transparent 32%);
+    background-attachment: fixed;
+}
+
+/* خطوط تقنية خفيفة فوق الخلفية */
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 5;
+    pointer-events: none;
+    opacity: .15;
+    background: repeating-linear-gradient(
+        to bottom,
+        transparent 0px,
+        transparent 3px,
+        #b8ff6509 4px
+    );
+}
+
+/* برق زخرفي في الخلفية */
+body {
+    position: relative;
+}
+
+body .lightning-effect {
+    display: none;
+}
+
+body::before {
+    animation: gridGlow 8s ease-in-out infinite alternate;
+}
+
+@keyframes gridGlow {
+    from {
+        opacity: .4;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* إضاءة متحركة على إطار الرادار */
+.command-display {
+    box-shadow:
+        0 0 25px #b8ff6508,
+        inset 0 0 35px #b8ff6505;
+    animation: commandGlow 5s ease-in-out infinite alternate;
+}
+
+@keyframes commandGlow {
+    from {
+        box-shadow:
+            0 0 15px #b8ff6505,
+            inset 0 0 20px #b8ff6503;
+    }
+    to {
+        box-shadow:
+            0 0 35px #b8ff6517,
+            inset 0 0 40px #b8ff650a;
+    }
+}
+
+/* لمعة متحركة على بطاقات القطاعات */
+.sector-card {
+    isolation: isolate;
+}
+
+.sector-card::before {
+    content: "";
+    position: absolute;
+    top: -100%;
+    left: -70%;
+    width: 45%;
+    height: 300%;
+    transform: rotate(25deg);
+    background: linear-gradient(
+        90deg,
+        transparent,
+        #b8ff650c,
+        transparent
+    );
+    pointer-events: none;
+    transition: left .7s ease;
+    z-index: -1;
+}
+
+.sector-card:hover::before {
+    left: 140%;
+}
+
+/* توهّج النص الأخضر */
+.hero h1 span {
+    text-shadow: 0 0 25px #b8ff6520;
+}
+
+/* إضاءة الأزرار */
+.btn-primary {
+    box-shadow: 0 0 0 #b8ff6500;
+}
+
+.btn-primary:hover {
+    box-shadow: 0 0 25px #b8ff6535;
+}
+
+/* خطوط ضوئية أعلى وأسفل قسم الترحيب */
+.hero {
+    position: relative;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 25px;
+    right: 0;
+    width: 90px;
+    height: 1px;
+    background: linear-gradient(
+        to left,
+        var(--green),
+        transparent
+    );
+    opacity: .55;
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    width: 130px;
+    height: 1px;
+    background: linear-gradient(
+        to right,
+        var(--green),
+        transparent
+    );
+    opacity: .4;
+}
+
+/* تقليل الحركة لمن يفضّل الهدوء */
+@media (prefers-reduced-motion: reduce) {
+    .command-display,
+    body::before {
+        animation: none;
+    }
+}
+
+/* ===== ENHANCED TECH COMMAND CENTER ===== */
+
+/* توهّج أخضر تقني في الخلفية */
+body {
+    background-color: #070d0a;
+    background-image:
+        radial-gradient(ellipse at 15% 25%, #55ff3818 0%, transparent 38%),
+        radial-gradient(ellipse at 85% 65%, #00ff9910 0%, transparent 35%),
+        linear-gradient(180deg, #090e0d, #07100b);
+    background-attachment: fixed;
+}
+
+/* خطوط شاشة دقيقة */
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 5;
+    pointer-events: none;
+    background:
+        repeating-linear-gradient(
+            to bottom,
+            transparent 0px,
+            transparent 3px,
+            #aaff6508 4px
+        );
+    opacity: .35;
+}
+
+/* حركة الشبكة التقنية */
+body::before {
+    animation: gridGlow 6s ease-in-out infinite alternate;
+}
+
+@keyframes gridGlow {
+    from { opacity: .25; }
+    to   { opacity: .8; }
+}
+
+/* إطار الرادار يتوهج تدريجيًا */
+.command-display {
+    box-shadow:
+        0 0 18px #7dff3510,
+        inset 0 0 25px #7dff3508;
+    animation: commandGlow 4s ease-in-out infinite alternate;
+}
+
+@keyframes commandGlow {
+    from {
+        border-color: #263f2d;
+        box-shadow:
+            0 0 12px #7dff3508,
+            inset 0 0 20px #7dff3505;
+    }
+    to {
+        border-color: #79ff5260;
+        box-shadow:
+            0 0 30px #7dff3520,
+            inset 0 0 35px #7dff3510;
+    }
+}
+
+/* توهّج حلقات الرادار */
+.radar {
+    box-shadow:
+        0 0 18px #b8ff6510,
+        inset 0 0 20px #b8ff6508;
+    animation: radarPulse 3s ease-in-out infinite alternate;
+}
+
+@keyframes radarPulse {
+    from {
+        border-color: #b8ff6530;
+        box-shadow: 0 0 10px #b8ff6508;
+    }
+    to {
+        border-color: #b8ff6580;
+        box-shadow: 0 0 28px #b8ff6520;
+    }
+}
+
+/* لمعة تمر على البطاقات عند الوقوف عليها */
+.sector-card {
+    isolation: isolate;
+}
+
+.sector-card::before {
+    content: "";
+    position: absolute;
+    top: -100%;
+    left: -80%;
+    width: 45%;
+    height: 300%;
+    transform: rotate(25deg);
+    background: linear-gradient(
+        90deg,
+        transparent,
+        #b8ff6520,
+        #b8ff6510,
+        transparent
+    );
+    pointer-events: none;
+    transition: left .7s ease;
+    z-index: -1;
+}
+
+.sector-card:hover::before {
+    left: 140%;
+}
+
+/* إضاءة خفيفة للنص والأزرار */
+.hero h1 span {
+    text-shadow: 0 0 22px #b8ff6530;
+}
+
+.btn-primary:hover {
+    box-shadow:
+        0 0 15px #b8ff6530,
+        0 0 30px #b8ff6515;
+}
+
+/* احترام إعداد تقليل الحركة */
+@media (prefers-reduced-motion: reduce) {
+    body::before,
+    .command-display,
+    .radar {
+        animation: none !important;
+    }
+}
+/* ===== DER3 RANDOM GREEN LINES ===== */
+
+.der3-lines {
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    overflow: hidden;
+    opacity: .65;
+    background:
+        linear-gradient(117deg, transparent 15%, #39ff1420 15.1%, transparent 15.3%),
+        linear-gradient(32deg, transparent 42%, #00ff9d25 42.1%, transparent 42.3%),
+        linear-gradient(145deg, transparent 67%, #39ff1420 67.1%, transparent 67.3%),
+        linear-gradient(78deg, transparent 83%, #00ff9d18 83.1%, transparent 83.3%);
+    background-size: 700px 500px, 850px 650px, 900px 700px, 650px 550px;
+    animation: der3LinePulse 7s ease-in-out infinite alternate;
+}
+
+@keyframes der3LinePulse {
+    from { opacity: .3; }
+    to   { opacity: .75; }
+}
+
+/* ===== GLOWING CARDS ===== */
+
+.sector-card,
+.card {
+    position: relative;
+    overflow: hidden;
+    transition: transform .3s ease, border-color .3s ease,
+                box-shadow .3s ease;
+}
+
+.sector-card:hover,
+.card:hover {
+    transform: translateY(-5px);
+    border-color: #39ff1480;
+    box-shadow: 0 0 18px #39ff1420, inset 0 0 14px #39ff1408;
+}
+
+/* ===== RADAR SWEEP ===== */
+
+.command-display {
+    position: relative;
+    overflow: hidden;
+}
+
+.command-display .der3-radar-sweep {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    top: 50%;
+    left: 50%;
+    border-radius: 50%;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    background: conic-gradient(
+        from 0deg,
+        transparent 0deg,
+        #39ff1405 240deg,
+        #39ff1450 350deg,
+        #39ff14a0 360deg
+    );
+    animation: der3RadarSpin 4s linear infinite;
+    z-index: 0;
+}
+
+@keyframes der3RadarSpin {
+    to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* ===== SYSTEM STATUS BAR ===== */
+
+.der3-status {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px 22px;
+    padding: 10px 16px;
+    margin: 12px auto;
+    width: fit-content;
+    max-width: 95%;
+    color: #a5e9a5;
+    background: #07110cdd;
+    border: 1px solid #39ff1438;
+    border-radius: 8px;
+    font: 12px/1.5 monospace;
+    letter-spacing: 1px;
+    position: relative;
+    z-index: 2;
+}
+
+.der3-status-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.der3-status-dot {
+    width: 7px;
+    height: 7px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: #39ff14;
+    box-shadow: 0 0 8px #39ff14;
+    animation: der3StatusPulse 2s ease-in-out infinite;
+}
+
+@keyframes der3StatusPulse {
+    50% { opacity: .4; box-shadow: 0 0 2px #39ff14; }
+}
+
+/* ===== HEADING REVEAL ===== */
+
+.der3-heading {
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity .65s ease, transform .65s ease;
+}
+
+.der3-heading.der3-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.der3-heading.der3-visible::after {
+    content: "";
+    display: block;
+    width: 42px;
+    height: 2px;
+    margin-top: 9px;
+    background: #39ff14;
+    box-shadow: 0 0 8px #39ff1470;
+}
+
+/* احترام إعداد تقليل الحركة */
+@media (prefers-reduced-motion: reduce) {
+    .der3-lines,
+    .der3-radar-sweep,
+    .der3-status-dot {
+        animation: none !important;
+    }
+
+    .der3-heading {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+
+    .sector-card,
+    .card {
+        transition: none;
+    }
+}
+
+/* ===== DER3 COMMAND CENTER EXPANSION ===== */
+
+.der3-module {
+    color: #d8f5df;
+    background: rgba(5, 15, 10, .94);
+    border: 1px solid rgba(57, 255, 20, .25);
+    border-radius: 12px;
+    padding: 18px;
+    margin: 18px auto;
+    width: min(100% - 28px, 1050px);
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+}
+
+.der3-module-title {
+    color: #8cff79;
+    font-size: 14px;
+    letter-spacing: 1px;
+    margin: 0 0 14px;
+}
+
+.der3-muted {
+    color: #8eaa95;
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+.der3-clock {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.der3-clock-time {
+    font: 700 clamp(25px, 5vw, 40px)/1.2 monospace;
+    color: #75ff59;
+    text-shadow: 0 0 14px #39ff1435;
+    font-variant-numeric: tabular-nums;
+}
+
+.der3-terminal {
+    height: 155px;
+    overflow: auto;
+    background: #030906;
+    border: 1px solid #1c3925;
+    border-radius: 8px;
+    padding: 12px;
+    font: 12px/1.9 monospace;
+    overflow-wrap: anywhere;
+}
+
+.der3-terminal-line {
+    color: #91e99b;
+}
+
+.der3-terminal-line::before {
+    content: "> ";
+    color: #39ff14;
+}
+
+.der3-cursor {
+    display: inline-block;
+    width: 7px;
+    height: 14px;
+    vertical-align: middle;
+    background: #39ff14;
+    animation: der3Blink 1s steps(2) infinite;
+}
+
+@keyframes der3Blink {
+    50% { opacity: 0; }
+}
+
+/* Animated DER3 emblem */
+.der3-emblem {
+    width: 86px;
+    height: 86px;
+    margin: 5px auto 16px;
+    display: grid;
+    place-items: center;
+    position: relative;
+    border: 1px solid #39ff1470;
+    border-radius: 50%;
+    color: #8cff79;
+    font: 700 25px monospace;
+    text-shadow: 0 0 12px #39ff14;
+}
+
+.der3-emblem::before,
+.der3-emblem::after {
+    content: "";
+    position: absolute;
+    inset: -7px;
+    border: 1px solid #39ff1440;
+    border-radius: 50%;
+    animation: der3Orbit 9s linear infinite;
+}
+
+.der3-emblem::after {
+    inset: 7px -7px;
+    border-color: #00ff9d70;
+    animation-direction: reverse;
+    animation-duration: 6s;
+}
+
+@keyframes der3Orbit {
+    to { transform: rotate(360deg); }
+}
+
+.der3-emblem-caption {
+    text-align: center;
+    color: #91b89a;
+    font-size: 11px;
+    letter-spacing: 2px;
+}
+
+/* Fictional interactive map */
+.der3-map {
+    position: relative;
+    min-height: 280px;
+    border: 1px solid #24482d;
+    border-radius: 10px;
+    overflow: hidden;
+    background:
+        radial-gradient(ellipse at 50% 50%, #173b25 0%, #08160e 75%);
+}
+
+.der3-map svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.der3-map-grid {
+    stroke: #39ff141b;
+    stroke-width: 1;
+    fill: none;
+}
+
+.der3-map-route {
+    stroke: #39ff1470;
+    stroke-width: 2;
+    stroke-dasharray: 6 7;
+    fill: none;
+}
+
+.der3-map-point {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    width: 15px;
+    height: 15px;
+    border: 2px solid #8cff79;
+    border-radius: 50%;
+    background: #163d20;
+    box-shadow: 0 0 13px #39ff1480;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.der3-map-point:hover,
+.der3-map-point:focus-visible {
+    background: #75ff59;
+    outline: 2px solid #75ff5960;
+    outline-offset: 5px;
+}
+
+.der3-map-point[aria-pressed="true"] {
+    background: #b6ff9e;
+    box-shadow: 0 0 20px #39ff14;
+}
+
+.der3-map-info {
+    position: relative;
+    z-index: 3;
+    margin: 12px;
+    padding: 12px;
+    width: fit-content;
+    max-width: calc(100% - 24px);
+    background: #030906e8;
+    border: 1px solid #39ff1440;
+    border-radius: 8px;
+    font-size: 12px;
+}
+
+/* Dialog / modal */
+.der3-modal[hidden] {
+    display: none !important;
+}
+
+.der3-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: grid;
+    place-items: center;
+    padding: 18px;
+    background: #000b;
+    backdrop-filter: blur(5px);
+}
+
+.der3-modal-panel {
+    width: min(100%, 500px);
+    max-height: 80vh;
+    overflow: auto;
+    background: #07110b;
+    border: 1px solid #39ff1470;
+    border-radius: 14px;
+    padding: 22px;
+    box-shadow: 0 0 35px #39ff141c;
+}
+
+.der3-button {
+    color: #b8ffad;
+    background: #102317;
+    border: 1px solid #39ff1460;
+    border-radius: 7px;
+    padding: 9px 13px;
+    cursor: pointer;
+    font: inherit;
+    transition: background .2s, box-shadow .2s;
+}
+
+.der3-button:hover {
+    background: #183c21;
+    box-shadow: 0 0 12px #39ff1425;
+}
+
+.der3-modal-close {
+    float: left;
+    margin-bottom: 12px;
+}
+
+/* Smart section navigation */
+.der3-top-button {
+    position: fixed;
+    bottom: 22px;
+    right: 22px;
+    z-index: 100;
+    width: 43px;
+    height: 43px;
+    border-radius: 50%;
+    background: #0b1b10;
+    color: #8cff79;
+    border: 1px solid #39ff1470;
+    cursor: pointer;
+    box-shadow: 0 0 14px #39ff1420;
+}
+
+.der3-nav-current {
+    text-shadow: 0 0 10px #39ff14;
+    box-shadow: inset 0 -2px #39ff14;
+}
+
+.der3-sector-more {
+    margin-top: 12px;
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    .der3-emblem::before,
+    .der3-emblem::after,
+    .der3-cursor {
+        animation: none !important;
+    }
+
+    html {
+        scroll-behavior: auto !important;
+    }
+}
+/* ===== DER3: Sector Cards Enhancement ===== */
+
+.sector-card {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
+}
+
+.sector-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.18);
+}
+
+.sector-card:focus-within {
+    outline: 2px solid currentColor;
+    outline-offset: 3px;
+}
+
+.sector-card .sector-icon,
+.sector-card .icon {
+    transition: transform 0.25s ease;
+}
+
+.sector-card:hover .sector-icon,
+.sector-card:hover .icon {
+    transform: scale(1.06);
+}
+
+.sector-card .sector-details {
+    display: grid;
+    grid-template-rows: 0fr;
+    opacity: 0;
+    transition:
+        grid-template-rows 0.25s ease,
+        opacity 0.25s ease;
+}
+
+.sector-card .sector-details > div {
+    overflow: hidden;
+}
+
+.sector-card.is-expanded .sector-details {
+    grid-template-rows: 1fr;
+    opacity: 1;
+}
+
+.sector-card .sector-toggle {
+    cursor: pointer;
+    font: inherit;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .sector-card,
+    .sector-card *,
+    .sector-card::before,
+    .sector-card::after {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+@media (max-width: 600px) {
+    .sector-card:hover {
+        transform: none;
+    }
+
+    .sector-card .sector-toggle {
+        min-height: 40px;
+    }
+}
 </style>
 </head>
 
@@ -1293,6 +2081,421 @@ document.querySelectorAll(".sector-card").forEach(card => {
         card.style.setProperty("--hovered", "0");
     });
 });
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    // خلفية الخطوط العشوائية
+    if (!document.querySelector(".der3-lines")) {
+        const lines = document.createElement("div");
+        lines.className = "der3-lines";
+        lines.setAttribute("aria-hidden", "true");
+        document.body.prepend(lines);
+    }
+
+    // شريط حالة النظام
+    const status = document.createElement("div");
+    status.className = "der3-status";
+    status.setAttribute("aria-label", "حالة واجهة درع");
+
+    status.innerHTML = `
+        <span class="der3-status-item">
+            <span class="der3-status-dot"></span>
+            DER3 INTERFACE
+        </span>
+        <span class="der3-status-item">
+            <span class="der3-status-dot"></span>
+            SYSTEM ONLINE
+        </span>
+        <span class="der3-status-item">
+            <span class="der3-status-dot"></span>
+            RADAR ACTIVE
+        </span>
+    `;
+
+    const hero = document.querySelector(".hero");
+    const command = document.querySelector(".command-display");
+
+    if (hero) {
+        hero.appendChild(status);
+    } else if (command) {
+        command.before(status);
+    }
+
+    // إضافة تأثير المسح الراداري داخل لوحة القيادة
+    if (command && !command.querySelector(".der3-radar-sweep")) {
+        const radar = document.createElement("div");
+        radar.className = "der3-radar-sweep";
+        radar.setAttribute("aria-hidden", "true");
+        command.appendChild(radar);
+    }
+
+    // ظهور العناوين تدريجيًا
+    const headings = document.querySelectorAll(
+        "section h2, section h3"
+    );
+
+    if ("IntersectionObserver" in window) {
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("der3-visible");
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15 });
+
+        headings.forEach(heading => {
+            heading.classList.add("der3-heading");
+            observer.observe(heading);
+        });
+    } else {
+        headings.forEach(heading => {
+            heading.classList.add("der3-visible");
+        });
+    }
+});
+
+(() => {
+    function initDer3() {
+        if (document.querySelector("#der3-expansion")) return;
+
+        const styleAnchor =
+            document.querySelector(".command-display") ||
+            document.querySelector(".hero") ||
+            document.querySelector("main") ||
+            document.body;
+
+        const root = document.createElement("div");
+        root.id = "der3-expansion";
+
+        // Keep existing content intact: add a new module after the chosen anchor.
+        const clock = document.createElement("section");
+        clock.className = "der3-module";
+        clock.innerHTML = `
+            <h2 class="der3-module-title">COMMAND CENTER / CLOCK</h2>
+            <div class="der3-clock">
+                <div>
+                    <div id="der3-time" class="der3-clock-time">--:--:--</div>
+                    <div id="der3-date" class="der3-muted"></div>
+                </div>
+                <div class="der3-emblem" aria-label="شعار درع التجريبي">D3</div>
+            </div>
+            <div class="der3-emblem-caption">DER3 • DEMO INTERFACE</div>
+        `;
+
+        const terminal = document.createElement("section");
+        terminal.className = "der3-module";
+        terminal.innerHTML = `
+            <h2 class="der3-module-title">SYSTEM CONSOLE / DEMO</h2>
+            <p class="der3-muted">
+                سجل واجهة تجريبي — لا يعرض عمليات أو بيانات حقيقية.
+            </p>
+            <div class="der3-terminal" id="der3-terminal"
+                 role="log" aria-live="polite"></div>
+        `;
+
+        const map = document.createElement("section");
+        map.className = "der3-module";
+        map.innerHTML = `
+            <h2 class="der3-module-title">INTERACTIVE MAP / DEMO</h2>
+            <p class="der3-muted">
+                خريطة خيالية للتفاعل فقط؛ لا تمثل مواقع فعلية.
+            </p>
+            <div class="der3-map" id="der3-map">
+                <svg viewBox="0 0 600 300" preserveAspectRatio="none"
+                     aria-hidden="true">
+                    <g class="der3-map-grid">
+                        <path d="M0 50 H600 M0 100 H600 M0 150 H600
+                                 M0 200 H600 M0 250 H600
+                                 M100 0 V300 M200 0 V300 M300 0 V300
+                                 M400 0 V300 M500 0 V300"/>
+                    </g>
+                    <path class="der3-map-route"
+                          d="M90 210 L220 130 L340 180 L490 75"/>
+                    <path class="der3-map-route"
+                          d="M220 130 L270 55 L490 75"/>
+                </svg>
+                <button class="der3-map-point" style="left:15%;top:70%"
+                    data-place="A" aria-label="النقطة التجريبية A"
+                    aria-pressed="false"></button>
+                <button class="der3-map-point" style="left:37%;top:43%"
+                    data-place="B" aria-label="النقطة التجريبية B"
+                    aria-pressed="false"></button>
+                <button class="der3-map-point" style="left:57%;top:60%"
+                    data-place="C" aria-label="النقطة التجريبية C"
+                    aria-pressed="false"></button>
+                <button class="der3-map-point" style="left:82%;top:25%"
+                    data-place="D" aria-label="النقطة التجريبية D"
+                    aria-pressed="false"></button>
+                <div class="der3-map-info" id="der3-map-info" aria-live="polite">
+                    اختار نقطة لعرض معلوماتها التجريبية.
+                </div>
+            </div>
+        `;
+
+        root.append(clock, terminal, map);
+
+        if (styleAnchor === document.body) {
+            document.body.appendChild(root);
+        } else {
+            styleAnchor.insertAdjacentElement("afterend", root);
+        }
+
+        // Digital clock: uses the visitor's local time.
+        const updateClock = () => {
+            const now = new Date();
+            const time = document.getElementById("der3-time");
+            const date = document.getElementById("der3-date");
+
+            if (time) {
+                time.textContent = new Intl.DateTimeFormat("en-GB", {
+                    hour: "2-digit", minute: "2-digit",
+                    second: "2-digit", hour12: false
+                }).format(now);
+            }
+
+            if (date) {
+                date.textContent = new Intl.DateTimeFormat("ar-EG", {
+                    weekday: "long", year: "numeric",
+                    month: "long", day: "numeric"
+                }).format(now);
+            }
+        };
+
+        updateClock();
+        window.setInterval(updateClock, 1000);
+
+        // Animated demonstration console.
+        const lines = [
+            "DER3 interface initialized.",
+            "Visual modules loaded.",
+            "Demo environment ready.",
+            "Interactive map awaiting selection.",
+            "No real operational data connected."
+        ];
+
+        const log = document.getElementById("der3-terminal");
+        let lineIndex = 0;
+
+        const addLine = () => {
+            if (!log || lineIndex >= lines.length) return;
+
+            const line = document.createElement("div");
+            line.className = "der3-terminal-line";
+            line.textContent = lines[lineIndex++];
+            log.appendChild(line);
+            log.scrollTop = log.scrollHeight;
+
+            window.setTimeout(addLine, 650);
+        };
+
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+            lines.forEach(text => {
+                const line = document.createElement("div");
+                line.className = "der3-terminal-line";
+                line.textContent = text;
+                log.appendChild(line);
+            });
+        } else {
+            addLine();
+        }
+
+        // Demo map: labels are fictional and contain no real locations.
+        const mapInfo = document.getElementById("der3-map-info");
+        const demoPlaces = {
+            A: "النقطة A — منطقة خيالية تجريبية.",
+            B: "النقطة B — منطقة خيالية تجريبية.",
+            C: "النقطة C — منطقة خيالية تجريبية.",
+            D: "النقطة D — منطقة خيالية تجريبية."
+        };
+
+        map.querySelectorAll(".der3-map-point").forEach(point => {
+            point.addEventListener("click", () => {
+                map.querySelectorAll(".der3-map-point").forEach(p => {
+                    p.setAttribute("aria-pressed", String(p === point));
+                });
+                mapInfo.textContent = demoPlaces[point.dataset.place];
+            });
+        });
+
+        // Modal: show extra information when a sector card is clicked.
+        const modal = document.createElement("div");
+        modal.className = "der3-modal";
+        modal.hidden = true;
+        modal.innerHTML = `
+            <div class="der3-modal-panel" role="dialog"
+                 aria-modal="true" aria-labelledby="der3-modal-title">
+                <button class="der3-button der3-modal-close"
+                        type="button">إغلاق ✕</button>
+                <h2 id="der3-modal-title" class="der3-module-title">
+                    معلومات القطاع
+                </h2>
+                <div id="der3-modal-content"></div>
+            </div>
+        `;
+        document.body.appendChild(modal);
+
+        const modalTitle = modal.querySelector("#der3-modal-title");
+        const modalContent = modal.querySelector("#der3-modal-content");
+        const closeButton = modal.querySelector(".der3-modal-close");
+        let previousFocus = null;
+
+        function closeModal() {
+            modal.hidden = true;
+            if (previousFocus) previousFocus.focus();
+        }
+
+        closeButton.addEventListener("click", closeModal);
+        modal.addEventListener("click", event => {
+            if (event.target === modal) closeModal();
+        });
+
+        document.addEventListener("keydown", event => {
+            if (event.key === "Escape" && !modal.hidden) closeModal();
+        });
+
+        // Use existing sector cards, if present. Do not replace their contents.
+        document.querySelectorAll(
+            ".sector-card, .sector, .sector-item"
+        ).forEach(card => {
+            if (card.dataset.der3ModalBound) return;
+            card.dataset.der3ModalBound = "true";
+
+            const heading = card.querySelector("h2, h3, h4");
+            const title = heading ? heading.textContent.trim() : "معلومات إضافية";
+            const description = card.querySelector("p");
+            const descriptionText = description
+                ? description.textContent.trim()
+                : "لا يوجد وصف إضافي داخل هذه البطاقة.";
+
+            const button = document.createElement("button");
+            button.type = "button";
+            button.className = "der3-button der3-sector-more";
+            button.textContent = "عرض التفاصيل";
+            card.appendChild(button);
+
+            button.addEventListener("click", () => {
+                previousFocus = button;
+                modalTitle.textContent = title;
+                modalContent.replaceChildren();
+
+                const paragraph = document.createElement("p");
+                paragraph.textContent = descriptionText;
+                modalContent.appendChild(paragraph);
+
+                const note = document.createElement("p");
+                note.className = "der3-muted";
+                note.textContent =
+                    "معلومات مستمدة من محتوى البطاقة الحالية؛ لا توجد بيانات تشغيلية مباشرة.";
+                modalContent.appendChild(note);
+
+                modal.hidden = false;
+                closeButton.focus();
+            });
+        });
+
+        // Smart section navigation: highlight the current section.
+        const navLinks = [...document.querySelectorAll(
+            'nav a[href^="#"], header a[href^="#"]'
+        )];
+
+        const sectionPairs = navLinks.map(link => {
+            const id = link.getAttribute("href").slice(1);
+            const section = document.getElementById(id);
+            return section ? { link, section } : null;
+        }).filter(Boolean);
+
+        if ("IntersectionObserver" in window) {
+            const navObserver = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (!entry.isIntersecting) return;
+
+                    sectionPairs.forEach(({link, section}) => {
+                        const active = section === entry.target;
+                        link.classList.toggle("der3-nav-current", active);
+
+                        if (active) {
+                            link.setAttribute("aria-current", "location");
+                        } else {
+                            link.removeAttribute("aria-current");
+                        }
+                    });
+                });
+            }, { threshold: 0.25 });
+
+            sectionPairs.forEach(({section}) => navObserver.observe(section));
+        }
+
+        // Back-to-top button.
+        const topButton = document.createElement("button");
+        topButton.type = "button";
+        topButton.className = "der3-top-button";
+        topButton.textContent = "↑";
+        topButton.setAttribute("aria-label", "الرجوع إلى أعلى الصفحة");
+        topButton.hidden = true;
+        document.body.appendChild(topButton);
+
+        topButton.addEventListener("click", () => {
+            window.scrollTo({
+                top: 0,
+                behavior: window.matchMedia(
+                    "(prefers-reduced-motion: reduce)"
+                ).matches ? "auto" : "smooth"
+            });
+        });
+
+        window.addEventListener("scroll", () => {
+            topButton.hidden = window.scrollY < 350;
+        }, { passive: true });
+    }
+
+    if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", initDer3, { once: true });
+    } else {
+        initDer3();
+    }
+})();
+/* ===== DER3: Sector Cards Interaction ===== */
+
+document.querySelectorAll(".sector-card .sector-toggle").forEach((button) => {
+    button.addEventListener("click", () => {
+        const card = button.closest(".sector-card");
+        const details = card?.querySelector(".sector-details");
+
+        if (!card || !details) return;
+
+        const expanded = button.getAttribute("aria-expanded") === "true";
+        const nextState = !expanded;
+
+        button.setAttribute("aria-expanded", String(nextState));
+        card.classList.toggle("is-expanded", nextState);
+        details.hidden = !nextState;
+
+        button.textContent = nextState
+            ? "إخفاء التفاصيل"
+            : "عرض التفاصيل";
+    });
+});
+
+/* Reveal cards when they enter the viewport */
+(() => {
+    const cards = document.querySelectorAll(".sector-card");
+
+    if (!("IntersectionObserver" in window)) return;
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+        });
+    }, {
+        threshold: 0.12
+    });
+
+    cards.forEach((card) => observer.observe(card));
+})();
 </script>
 
 </body>
